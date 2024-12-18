@@ -38,13 +38,18 @@ if (mysqli_num_rows($user_query) > 0) {
           <p><?php echo $row['status']; ?></p>
         </div>
         <div class="premium-status">
-          <p><?php echo $is_premium ? 'Eres usuario premium' : 'No eres usuario premium'; ?></p>
-          <?php if (!$is_premium): ?>
-            <button id="buy-premium" class="premium-button" onclick="purchasePremium()">Comprar Premium</button>
-          <?php else: ?>
-            <button id="cancel-premium" class="premium-button" onclick="cancelPremium()">Desactivar Premium</button>
-          <?php endif; ?>
-        </div>
+  <p><?php echo $is_premium ? 'Eres usuario premium' : 'No eres usuario premium'; ?></p>
+  <?php if (!$is_premium): ?>
+    <button id="buy-premium" class="premium-button" onclick="purchasePremium()">Comprar Premium</button>
+  <?php else: ?>
+    <button id="cancel-premium" class="premium-button" onclick="cancelPremium()">Desactivar Premium</button>
+    <!-- Botón para ver la factura si el usuario es premium -->
+    <a href="php/factura.php?user_id=<?php echo $_SESSION['unique_id']; ?>" class="invoice-button">
+      <button id="view-invoice" class="tool-button">Ver Factura</button>
+    </a>
+  <?php endif; ?>
+</div>
+
       </header>
       <div class="chat-box">
         <!-- Mensajes cargados dinámicamente -->
